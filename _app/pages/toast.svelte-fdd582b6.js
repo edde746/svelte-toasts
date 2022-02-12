@@ -1,4 +1,4 @@
-import{S as Is,i as ws,s as ys,e as o,t as d,k as l,c as a,a as r,h as s,d as e,m as n,b as f,g as Vs,I as t,Q as fr}from"../chunks/vendor-9cd11116.js";import{b as Ds}from"../chunks/paths-4b3c6e7e.js";function gs(bs){let v,O,Ne,Xe,rt,Ze,to,dt,ur=`{
+import{S as Is,i as ws,s as ys,e as o,t as d,k as l,c as a,a as r,h as s,d as e,m as n,b as f,g as Vs,I as t,Q as fr}from"../chunks/vendor-e1b88f46.js";import{b as Ds}from"../chunks/paths-4b3c6e7e.js";function gs(bs){let v,O,Ne,Xe,rt,Ze,to,dt,ur=`{
   title: "Welcome",
   description: "Thanks for trying svelte-toasts!",
   uid: 1615153277482,
