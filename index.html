@@ -1,19 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Svelte-Toasts</title>
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<link rel="icon" href="/svelte-toasts/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Svelte-Toasts</title>
+	<meta http-equiv="content-security-policy" content="">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/vendor-31e993cd.css">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/pages/__layout.svelte-6a33d4ce.css">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/pages/index.svelte-b0c77f90.css">
+	<link rel="modulepreload" href="/svelte-toasts/_app/start-4fe12496.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/chunks/vendor-9cd11116.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/chunks/paths-4b3c6e7e.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/pages/__layout.svelte-aaca4867.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/pages/index.svelte-82f1e3e0.js">
+</head>
 
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="build/bundle.css" />
-    <link rel="stylesheet" href="prism-vsc-theme.css" />
+<body>
+	
 
-    <script defer src="build/bundle.js"></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
 
-  <body></body>
+<div class="grid h-screen grid-cols-[18rem_minmax(0,_1fr)] overflow-hidden"><div class="sidebar"><div class="p-4 flex items-center gap-3 bg-slate-50"><img src="/svelte-toasts/images/logo.svg" alt="Logo" class="w-8 h-8">
+      <p>Svelte Toasts</p>
+      <a class="ml-auto" href="https://github.com/mzohaibqc/svelte-toasts"><svg xmlns="http://www.w3.org/2000/svg" class="text-slate-600 hover:text-yellow-400 h-5 w-5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></a></div>
+    <a href="/svelte-toasts/" class="active">Demo</a><a href="/svelte-toasts/store">Store</a><a href="/svelte-toasts/toastcontainer">ToastContainer</a><a href="/svelte-toasts/toast">Toast</a><a href="/svelte-toasts/flattoast">FlatToast</a><a href="/svelte-toasts/bootstraptoast">BootstrapToast</a><a href="/svelte-toasts/custom">Custom Toast</a></div>
+  <div class="p-4 overflow-y-auto"><div class="space-y-3"><h2 class="text-xl font-semibold">Demo</h2>
+
+  <form class="grid md:grid-cols-2 gap-3"><div class="flex flex-col gap-3"><label class="svelte-4gxwfx"><p class="font-semibold text-sm mb-1">Title</p>
+        <input value="Success" name="title" type="text"></label>
+      <label class="svelte-4gxwfx"><p class="font-semibold text-sm mb-1">Description</p>
+        <input value="Form submitted successfully!" name="description" type="text"></label>
+      <label class="svelte-4gxwfx"><p class="font-semibold text-sm mb-1">Duration (seconds)</p>
+        <input value="0" name="duration" type="number"></label>
+      <div class="grid grid-cols-3 gap-3"><button type="submit" class="bg-sky-100 hover:bg-sky-200 text-slate-600">Show Toast</button>
+        <button class="bg-red-100 hover:bg-red-200 text-slate-600">Clear All</button>
+        <button class="bg-red-100 hover:bg-red-200 text-slate-600">Clear Last</button></div></div>
+    <div class="flex flex-col gap-3"><div><p class="font-semibold">Style</p>
+        <div class="flex gap-2"><div><input type="radio" id="flat" name="style" value="flat" checked>
+            <label for="flat" class="svelte-4gxwfx">Flat</label></div>
+          <div><input type="radio" id="bootstrap" name="style" value="bootstrap">
+            <label for="bootstrap" class="svelte-4gxwfx">Bootstrap</label></div></div>
+
+        <p class="font-semibold">Theme</p>
+        <div class="flex gap-2"><div><input type="radio" id="dark" name="theme" value="dark" checked>
+            <label for="dark" class="svelte-4gxwfx">Dark</label></div>
+          <div><input type="radio" id="light" name="theme" value="light">
+            <label for="light" class="svelte-4gxwfx">Light</label></div></div>
+
+        <p class="font-semibold">Placement</p>
+        <div class="grid grid-cols-3"><label class="svelte-4gxwfx"><input type="radio" name="placement" value="top-left">
+            <span class="svelte-4gxwfx">Top-Left</span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="placement" value="top-center">
+            <span class="svelte-4gxwfx">Top-Center</span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="placement" value="top-right">
+            <span class="svelte-4gxwfx">Top-Right</span></label>
+
+          <div></div>
+          <label class="svelte-4gxwfx"><input type="radio" name="placement" value="center-center">
+            <span class="svelte-4gxwfx">Center-Center</span></label>
+          <div></div>
+
+          <label class="svelte-4gxwfx"><input type="radio" name="placement" value="bottom-left">
+            <span class="svelte-4gxwfx">Bottom-Left</span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="placement" value="bottom-center">
+            <span class="svelte-4gxwfx">Bottom-Center</span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="placement" value="bottom-right" checked>
+            <span class="svelte-4gxwfx">Bottom-Right</span></label></div>
+
+        <p class="font-semibold">Type</p>
+        <div class="flex gap-2"><label class="svelte-4gxwfx"><input type="radio" name="type" value="success" checked>
+            <span class="svelte-4gxwfx">Success </span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="type" value="info">
+            <span class="svelte-4gxwfx">Info </span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="type" value="error">
+            <span class="svelte-4gxwfx">Error </span></label>
+          <label class="svelte-4gxwfx"><input type="radio" name="type" value="warning">
+            <span class="svelte-4gxwfx">Warning </span></label></div>
+
+        <p class="font-semibold">Progress</p>
+        <div><label class="svelte-4gxwfx"><input type="checkbox" name="progress">
+            <span class="svelte-4gxwfx">Show </span></label></div></div></div></form></div>
+
+<div class="toast-container bottom-right svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div><div class="toast-container bottom-left svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div><div class="toast-container top-right svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div><div class="toast-container top-left svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div><div class="toast-container top-center svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div><div class="toast-container bottom-center svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div><div class="toast-container center-center svelte-1rg6zyw" style="width: 320px"><ul class="svelte-1rg6zyw"></ul>
+  </div></div></div>
+
+
+		<script type="module" data-hydrate="1y5emh9">
+		import { start } from "/svelte-toasts/_app/start-4fe12496.js";
+		start({
+			target: document.querySelector('[data-hydrate="1y5emh9"]').parentNode,
+			paths: {"base":"/svelte-toasts","assets":"/svelte-toasts"},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [
+					import("/svelte-toasts/_app/pages/__layout.svelte-aaca4867.js"),
+						import("/svelte-toasts/_app/pages/index.svelte-82f1e3e0.js")
+				],
+				url: new URL("http://sveltekit-prerender/svelte-toasts"),
+				params: {}
+			}
+		});
+	</script>
+</body>
+
 </html>

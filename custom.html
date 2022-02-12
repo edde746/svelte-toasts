@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<link rel="icon" href="/svelte-toasts/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Svelte-Toasts</title>
+	<meta http-equiv="content-security-policy" content="">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/vendor-31e993cd.css">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/pages/__layout.svelte-6a33d4ce.css">
+	<link rel="modulepreload" href="/svelte-toasts/_app/start-4fe12496.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/chunks/vendor-9cd11116.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/chunks/paths-4b3c6e7e.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/pages/__layout.svelte-aaca4867.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/pages/custom.svelte-8b801180.js">
+</head>
+
+<body>
+	
+
+
+<div class="grid h-screen grid-cols-[18rem_minmax(0,_1fr)] overflow-hidden"><div class="sidebar"><div class="p-4 flex items-center gap-3 bg-slate-50"><img src="/svelte-toasts/images/logo.svg" alt="Logo" class="w-8 h-8">
+      <p>Svelte Toasts</p>
+      <a class="ml-auto" href="https://github.com/mzohaibqc/svelte-toasts"><svg xmlns="http://www.w3.org/2000/svg" class="text-slate-600 hover:text-yellow-400 h-5 w-5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></a></div>
+    <a href="/svelte-toasts/">Demo</a><a href="/svelte-toasts/store">Store</a><a href="/svelte-toasts/toastcontainer">ToastContainer</a><a href="/svelte-toasts/toast">Toast</a><a href="/svelte-toasts/flattoast">FlatToast</a><a href="/svelte-toasts/bootstraptoast">BootstrapToast</a><a href="/svelte-toasts/custom" class="active">Custom Toast</a></div>
+  <div class="p-4 overflow-y-auto"><div class="space-y-3"><h2 class="text-xl font-semibold">Custom Toast</h2>
+
+  <p>If <a href="/svelte-toasts/flattoast" class="text-sky-600 hover:underline">FlatToast</a> or
+    <a href="/svelte-toasts/bootstraptoast" class="text-sky-600 hover:underline">BootstrapToast</a> do not fullfil your needs even
+    after overriding styles, you can create and use your own toast component. ToastContainer has default slot which acts
+    as Toast Component template. You can write inline markup or create a stand alone component which takes a &quot;data&quot; prop
+    which is actually a toast object. You read about toast object
+    <a href="/svelte-toasts/toast" class="text-sky-600 hover:underline">here</a></p>
+
+  <h2 class="text-xl">Inline Template</h2>
+
+  <pre>&lt;script&gt;
+  import { toasts, ToastContainer }  from &quot;svelte-toasts&quot;;
+  
+  const showToast = () =&gt; {
+    const toast = toasts.add({
+      title: &#39;Hello&#39;,
+      description: &#39;Message body&#39;,
+    });
+  };
+&lt;/script&gt;
+
+&lt;button on:click={showToast}&gt;Show Toast&lt;/button&gt;
+&lt;ToastContainer {toasts} let:data={data}&gt;
+  &lt;div class=&quot;my-toast {data.type}&quot;&gt;
+    &lt;button on:click={data.remove}&gt;Close&lt;/button&gt;
+    &lt;p class=&quot;title&quot;&gt;{data.title}&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;p class=&quot;description&quot;&gt;{data.description}&lt;/p&gt;
+    &lt;div&gt;
+      Some other content here.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ToastContainer&gt;</pre>
+
+  <h2 class="text-xl">Custom Toast Component</h2>
+
+  <pre>// MyToast.svelte
+&lt;script&gt;
+  export let data;
+&lt;script&gt;
+
+&lt;div class=&quot;my-toast {data.type}&quot;&gt;
+  &lt;button on:click={data.remove}&gt;Close&lt;/button&gt;
+  &lt;p class=&quot;title&quot;&gt;{data.title}&lt;/p&gt;
+  &lt;hr&gt;
+  &lt;p class=&quot;description&quot;&gt;{data.description}&lt;/p&gt;
+  &lt;div&gt;
+    &lt;slot&gt;Some other content here.&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+  <p>And now you can use that component as toast template</p>
+
+  <pre>&lt;script&gt;
+  import { toasts, ToastContainer } from &quot;svelte-toasts&quot;;
+  import MyToast from &#39;./MyToast.svelte&#39;;
+  
+  const showToast = () =&gt; {
+    const toast = toasts.add({
+      title: &#39;Hello&#39;,
+      description: &#39;Message body&#39;,
+    });
+  };
+
+&lt;script&gt;
+
+&lt;button on:click={showToast}&gt;Show Toast&lt;/button&gt;
+&lt;ToastContainer {toasts} let:data={data}&gt;
+  &lt;MyToast {data} /&gt;
+&lt;/ToastContainer&gt;</pre></div></div></div>
+
+
+		<script type="module" data-hydrate="15gnymc">
+		import { start } from "/svelte-toasts/_app/start-4fe12496.js";
+		start({
+			target: document.querySelector('[data-hydrate="15gnymc"]').parentNode,
+			paths: {"base":"/svelte-toasts","assets":"/svelte-toasts"},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [
+					import("/svelte-toasts/_app/pages/__layout.svelte-aaca4867.js"),
+						import("/svelte-toasts/_app/pages/custom.svelte-8b801180.js")
+				],
+				url: new URL("http://sveltekit-prerender/svelte-toasts/custom"),
+				params: {}
+			}
+		});
+	</script>
+</body>
+
+</html>

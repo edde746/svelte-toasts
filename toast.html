@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<link rel="icon" href="/svelte-toasts/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Svelte-Toasts</title>
+	<meta http-equiv="content-security-policy" content="">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/vendor-31e993cd.css">
+	<link rel="stylesheet" href="/svelte-toasts/_app/assets/pages/__layout.svelte-6a33d4ce.css">
+	<link rel="modulepreload" href="/svelte-toasts/_app/start-4fe12496.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/chunks/vendor-9cd11116.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/chunks/paths-4b3c6e7e.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/pages/__layout.svelte-aaca4867.js">
+	<link rel="modulepreload" href="/svelte-toasts/_app/pages/toast.svelte-ab1681cb.js">
+</head>
+
+<body>
+	
+
+
+<div class="grid h-screen grid-cols-[18rem_minmax(0,_1fr)] overflow-hidden"><div class="sidebar"><div class="p-4 flex items-center gap-3 bg-slate-50"><img src="/svelte-toasts/images/logo.svg" alt="Logo" class="w-8 h-8">
+      <p>Svelte Toasts</p>
+      <a class="ml-auto" href="https://github.com/mzohaibqc/svelte-toasts"><svg xmlns="http://www.w3.org/2000/svg" class="text-slate-600 hover:text-yellow-400 h-5 w-5 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg></a></div>
+    <a href="/svelte-toasts/">Demo</a><a href="/svelte-toasts/store">Store</a><a href="/svelte-toasts/toastcontainer">ToastContainer</a><a href="/svelte-toasts/toast" class="active">Toast</a><a href="/svelte-toasts/flattoast">FlatToast</a><a href="/svelte-toasts/bootstraptoast">BootstrapToast</a><a href="/svelte-toasts/custom">Custom Toast</a></div>
+  <div class="p-4 overflow-y-auto"><div class="space-y-3"><h2 class="text-xl font-semibold">Toast</h2>
+
+  <p>A toast is shown based on a toast object in toasts store. When you call toasts.add(options) then a toast object is
+    added in toasts store which then is shown by ToastContainer. A toast object looks like this.
+  </p>
+
+  <pre>{
+  title: &quot;Welcome&quot;,
+  description: &quot;Thanks for trying svelte-toasts!&quot;,
+  uid: 1615153277482,
+  placement: &quot;bottom-right&quot;,
+  type: &quot;success&quot;,
+  theme: &quot;dark&quot;,
+  duration: 0,
+  remove: () =&gt; { /* implementation */ },
+  update: () =&gt; { /* implementation */ },
+  onClick: () =&gt; { console.log(&quot;Toast clicked&quot;); }
+  onRemove: () =&gt; { console.log(&quot;Toast removed&quot;); },
+  // and whatever properties that you want to add when calling toasts.add(options)
+}</pre>
+
+  <p>Below is a detail description of every property.</p>
+
+  <table><thead><tr><th>Prop </th>
+        <th>Type </th>
+        <th>Default </th>
+        <th>Description </th></tr></thead>
+    <tbody><tr><td><div class="font-semibold">title</div></td>
+        <td><div>string</div></td>
+        <td><div>-</div></td>
+        <td><div>Title of toast</div></td></tr>
+      <tr><td><div class="font-semibold">description</div></td>
+        <td><div>string</div></td>
+        <td><div>-</div></td>
+        <td><div>Description/body of toast</div></td></tr>
+      <tr><td><div class="font-semibold">remove</div></td>
+        <td><div>Function</div></td>
+        <td><div>-</div></td>
+        <td><div>Invoking remove method will remove the respective toast object from store/UI. e.g. toast1.remove()</div></td></tr>
+      <tr><td><div class="font-semibold">update</div></td>
+        <td><div>Function</div></td>
+        <td><div>-</div></td>
+        <td><div>Invoke update method to update a specific toast values like title, description or duration etc.
+            toast.update({ title; &quot;Progress: 80%&quot; })
+          </div></td></tr>
+      <tr><td><div class="font-semibold">onClick</div></td>
+        <td><div>Function</div></td>
+        <td><div>() =&gt; {}</div></td>
+        <td><div>You can provide onClick callback which will be invoked when toast will be clicked (except toast close
+            icon/button)
+          </div></td></tr>
+      <tr><td><div class="font-semibold">onRemove</div></td>
+        <td><div>Function</div></td>
+        <td><div>() =&gt; {}</div></td>
+        <td><div>You can provide onRemove callback which will be invoked when toast will be auto removed or removed by
+            clicking on cross icon/button.
+          </div></td></tr>
+      <tr><td><div class="font-semibold">component</div></td>
+        <td><div>Svelte Component</div></td>
+        <td><div>-</div></td>
+        <td><div>You can provide your own toast component to render toast for a specific toast object</div></td></tr>
+      <tr><td><div class="font-semibold">placement</div></td>
+        <td><div>string</div></td>
+        <td><div>-</div></td>
+        <td><div>Set placement of current toast, it will override default placement set by ToastContainer</div></td></tr>
+      <tr><td><div class="font-semibold">showProgress</div></td>
+        <td><div>boolean</div></td>
+        <td><div>-</div></td>
+        <td><div>If set to &quot;true&quot; and duration is greater than 0 then a timeout progress bar will be shown at the bottom of
+            current toast. It will override default value set by ToastContainer.
+          </div></td></tr>
+      <tr><td><div class="font-semibold">theme</div></td>
+        <td><div>string</div></td>
+        <td><div>-</div></td>
+        <td><div>&quot;dark&quot; and &quot;light&quot; themes are implemented for builtin Toast components but in case of your own Toast
+            component, you can implement or leave this feature. This will override default value set by ToastContainer
+            if you are using builtin Toast components.
+          </div></td></tr>
+      <tr><td><div class="font-semibold">type</div></td>
+        <td><div>string</div></td>
+        <td><div>-</div></td>
+        <td><div>Four types of toasts are available i.e. success, info, error and warning. It will override toast type set by
+            ToastContainer.
+          </div></td></tr>
+      <tr><td><div class="font-semibold">duration</div></td>
+        <td><div>number</div></td>
+        <td><div>-</div></td>
+        <td><div>Duration in milliseconds after which toast will be auto removed. If duration will be 0 or negative, toast
+            will not be auto removed but user can click on cross icon to remove it. It will override duration specified
+            by ToastContainer.
+          </div></td></tr></tbody></table>
+
+  <p>There are two builtin toast components in this package.</p>
+
+  <ul class="list-disc pl-8"><li><a href="/svelte-toasts/flattoast" class="text-sky-600 hover:underline">FlatToast</a></li>
+    <li><a href="/svelte-toasts/bootstraptoast" class="text-sky-600 hover:underline">BootstrapToast</a></li></ul>
+
+  <p>You can provide as default slot to ToastContainer to use that component for all toasts but if you want to use a
+    different design/template for a specific toast, you can provide <b>component</b> property in toast options.
+  </p>
+
+  <pre>&lt;script&gt;
+  import { toasts, ToastContainer, FlatToast }  from &quot;svelte-toasts&quot;;
+  
+  const showToast = () =&gt; {
+    const toast = toasts.add({
+      description: &#39;Message body&#39;,
+      component: BootstrapToast, // this will override toast component provided by ToastContainer
+    });
+  };
+&lt;/script&gt;
+  
+&lt;button on:click={showToast}&gt;Show Toast&lt;/button&gt;
+&lt;ToastContainer {toasts} let:data={data}&gt;
+  &lt;FlatToast {data} /&gt; &lt;!-- default slot as toast component --&gt;
+&lt;/ToastContainer&gt;</pre></div></div></div>
+
+
+		<script type="module" data-hydrate="1939lhu">
+		import { start } from "/svelte-toasts/_app/start-4fe12496.js";
+		start({
+			target: document.querySelector('[data-hydrate="1939lhu"]').parentNode,
+			paths: {"base":"/svelte-toasts","assets":"/svelte-toasts"},
+			session: {},
+			route: true,
+			spa: false,
+			trailing_slash: "never",
+			hydrate: {
+				status: 200,
+				error: null,
+				nodes: [
+					import("/svelte-toasts/_app/pages/__layout.svelte-aaca4867.js"),
+						import("/svelte-toasts/_app/pages/toast.svelte-ab1681cb.js")
+				],
+				url: new URL("http://sveltekit-prerender/svelte-toasts/toast"),
+				params: {}
+			}
+		});
+	</script>
+</body>
+
+</html>
