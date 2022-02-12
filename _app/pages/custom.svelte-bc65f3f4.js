@@ -23,7 +23,7 @@ import{S as lt,i as ct,s as it,e as n,t as o,k as f,c as l,a as c,h as s,d as r,
 </ToastContainer>`,$,B,_,F,q,C,N=`// MyToast.svelte
 <script>
   export let data;
-<script>
+<\/script>
 
 <div class="my-toast {data.type}">
   <button on:click={data.remove}>Close</button>
